@@ -10,6 +10,8 @@ public class TranscribeRequest {
 	private String outputBucket;
 	private String region;
     private String doctorID;
+    private String accessKeyId;
+	private String secretAccessKey;
 
     public TranscribeRequest(){
         this.doctorID ="";
@@ -44,6 +46,22 @@ public class TranscribeRequest {
     }
     public void setDoctorID(String doctorID) {
         this.doctorID = doctorID;
+    }
+
+    public String getAccessKeyId() {
+        return accessKeyId;
+    }
+
+    public void setAccessKeyId(String accessKeyId) {
+        this.accessKeyId = accessKeyId;
+    }
+
+    public String getSecretAccessKey() {
+        return secretAccessKey;
+    }
+
+    public void setSecretAccessKey(String secretAccessKey) {
+        this.secretAccessKey = secretAccessKey;
     }
 
     

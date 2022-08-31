@@ -119,10 +119,14 @@ public class App
         // POST data to then be converted into JSON. You can also just build the jason with the Keys and values directly
         // I used the TranscribeRequest class just for consistency and clarity with the API code / to explain
         TranscribeRequest transcribeRequest = new TranscribeRequest();
-        transcribeRequest.setJobName("consumer-job-test-noID");
+        transcribeRequest.setJobName("testing-credentials-withID");
         transcribeRequest.setMediaFileUri("s3://aws-med-audios/test-audios/07401/MR10001-202207111239.mp3");
+        transcribeRequest.setDoctorID("07401");
         transcribeRequest.setOutputBucket("aws-med-audios");
         transcribeRequest.setRegion("us-east-1");
+        // for safety, edit out your credentials when not working locally
+        transcribeRequest.setAccessKeyId("xxxx");
+        transcribeRequest.setSecretAccessKey("xxxxx");
         Gson gson = new Gson();
         String jsonRequest = gson.toJson(transcribeRequest);
         JsonObject json = (JsonObject) JsonParser.parseString(jsonRequest);
@@ -142,7 +146,7 @@ public class App
             //TODO handle respomse, json is unsupported?
             HttpResponse<String> getResponse = httpClient.send(postRequest, BodyHandlers.ofString());
             System.out.println(getResponse.body());
-    
+            
             
     
         } catch (URISyntaxException | IOException | InterruptedException e) {
